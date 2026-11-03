@@ -1,0 +1,70 @@
+
+<article
+  class="list-card-container"
+  [class.completed]="item().isCompleted"
+>
+  <!-- Checkbox -->
+  <mat-checkbox
+    class="item-check"
+    [checked]="item().isCompleted"
+    [attr.aria-label]="'Mark ' + item().title + ' as purchased'"
+    (change)="completedChange.emit($event.checked)"
+  />
+
+  <!-- Item information -->
+  <div class="item-content">
+    <h3>{{ item().title }}</h3>
+
+    <span class="item-details">
+      {{ item().unit }} · Added by {{ item().addedBy }}
+    </span>
+
+    @if (item().note) {
+      <div class="item-note">
+        <mat-icon>chat_bubble_outline</mat-icon>
+        <span>{{ item().note }}</span>
+      </div>
+    }
+  </div>
+
+  <!-- Actions -->
+  <div class="item-actions">
+    
+<div class="quantity-control">
+  <button
+    type="button"
+    class="quantity-button"
+    [disabled]="item().quantity <= 1 || item().isCompleted"
+    [attr.aria-label]="'Decrease ' + item().title + ' quantity'"
+    (click)="quantityChange.emit(item().quantity - 1)"
+  >
+    <mat-icon>remove</mat-icon>
+  </button>
+
+  <span class="quantity-value">
+    {{ item().quantity }}
+  </span>
+
+
+<button
+  type="button"
+  class="quantity-button"
+  (click)="increaseQuantity()"
+>
+  <mat-icon>add</mat-icon>
+</button>
+
+</div>
+
+
+    <button
+      type="button"
+      class="edit-button"
+      [disabled]="item().isCompleted"
+      [attr.aria-label]="'Edit ' + item().title"
+      (click)="edit.emit()"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+</article>

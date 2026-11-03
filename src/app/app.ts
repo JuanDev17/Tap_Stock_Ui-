@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header';
-import { List } from './components/list/list';1
+import { List } from './components/list/list';
+import { Dashboard } from './pages/dashboard/dashboard';1
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, HeaderComponent, List],
+  imports: [RouterOutlet, CommonModule, HeaderComponent, List, Dashboard],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

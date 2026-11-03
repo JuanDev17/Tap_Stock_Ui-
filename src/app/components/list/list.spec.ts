@@ -18,4 +18,14 @@ describe('List', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('updates an active item quantity when its quantity button is clicked', () => {
+    fixture.detectChanges();
+
+    const increaseButton: HTMLButtonElement =
+      fixture.nativeElement.querySelector('.quantity-button:last-child');
+    increaseButton.click();
+
+    expect(component.groceryItems[0].quantity).toBe(3);
+  });
 });

@@ -1,0 +1,19 @@
+
+<div class="usual-tags">
+  @for (item of items(); track item.id) {
+    <button
+      type="button"
+      class="usual-pill"
+      [class.added]="isAdded(item)"
+      [disabled]="isAdded(item)"
+      (click)="itemSelected.emit(item)"
+    >
+      <span>{{ item.emoji }}</span>
+      <span>{{ item.title }}</span>
+
+      <mat-icon>
+        {{ isAdded(item) ? 'check' : 'add' }}
+      </mat-icon>
+    </button>
+  }
+</div>

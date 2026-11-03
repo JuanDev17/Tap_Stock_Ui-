@@ -5,6 +5,41 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
+
+:root {
+  // Backgrounds
+  --bg-app: #FFF9F1;
+  --bg-card: #FFFFFF;
+  --bg-card-soft: #FFF0E6;
+  --bg-success: #CDEFE1;
+
+  // Buttons
+  --btn-primary: #F47C8C;
+  --btn-primary-hover: #E86578;
+  --btn-secondary: #FFE6A7;
+
+  // Accents
+  --accent-pink: #F47C8C;
+  --accent-mint: #CDEFE1;
+  --accent-yellow: #FFE6A7;
+  --accent-peach: #FFD2B8;
+
+  // Typography
+  --text-primary: #493B36;
+  --text-secondary: #887A73;
+  --text-on-primary: #352A29;
+
+  // Borders
+  --border-color: #EEDFD5;
+
+  // Shape
+  --radius-card: 20px;
+  --radius-button: 12px;
+}
+
 body {
-  padding: 16px
+  margin: 0;
+  background: var(--bg-app);
+  color: var(--text-primary);
+  font-family: 'Nunito', sans-serif;
 }

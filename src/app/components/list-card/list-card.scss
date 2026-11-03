@@ -1,0 +1,229 @@
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// Grocery card
+.list-card-container {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: start;
+  column-gap: 12px;
+  row-gap: 16px;
+
+  width: 100%;
+  padding: 18px;
+
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+// Checkbox
+.item-check {
+  align-self: start;
+}
+
+// Item content
+.item-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+}
+
+.item-details {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+// Optional notes
+.item-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px 12px;
+
+  background: var(--bg-card-soft);
+  border-radius: 10px;
+
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  line-height: 1.5;
+
+  mat-icon {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    margin-top: 2px;
+    color: var(--text-secondary);
+  }
+}
+
+// Status badge
+.item-status {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+
+  margin-top: 6px;
+  padding: 5px 10px;
+
+  background: var(--accent-yellow);
+  color: var(--text-primary);
+
+  border-radius: 999px;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+// Actions
+.item-actions {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  min-width: 0;
+}
+
+// Quantity controls
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 4px;
+
+  background: var(--bg-app);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.quantity-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+  padding: 0;
+
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: var(--text-primary);
+  cursor: pointer;
+
+  mat-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+  }
+
+  &:hover:not(:disabled) {
+    background: var(--accent-peach);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+
+.quantity-value {
+  min-width: 20px;
+  text-align: center;
+
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+// Edit button
+.edit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  background: var(--accent-yellow);
+  border: none;
+  border-radius: 12px;
+  color: var(--text-primary);
+  cursor: pointer;
+
+  mat-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+  }
+
+  &:hover {
+    background: var(--accent-peach);
+  }
+}
+
+// Completed card
+.list-card-container.completed {
+  background: var(--bg-success);
+  border-color: #91C9AE;
+
+  .item-content h3 {
+    text-decoration: line-through;
+    color: #345D4B;
+    opacity: 0.75;
+  }
+
+  .item-details {
+    color: #547B64;
+  }
+
+  .item-note {
+    background: #B8E6D0;
+  }
+
+  .item-status {
+    background: #A3DDBD;
+    color: #245C42;
+  }
+}
+
+// Tablet and desktop
+@media (min-width: 768px) {
+  .list-card-container {
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    align-items: center;
+    padding: 20px 24px;
+  }
+
+  .item-actions {
+    grid-column: 3;
+    grid-row: 1;
+  }
+}

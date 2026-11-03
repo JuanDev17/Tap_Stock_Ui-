@@ -1,6 +1,71 @@
-<main class="main-container">
-    <div>
-        <h1>On the list</h1>
+
+<section class="main-container">
+
+  <div class="list-header">
+    <h1>On the list</h1>
+
+    <div class="updated">
+      <span>
+        {{ itemCount }} to grab · Share with the family
+      </span>
+
+      <div class="updated-time">
+        <mat-icon>schedule</mat-icon>
+        <span>Updated just now</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Official grocery list -->
+
+<!-- Active grocery items -->
+<div class="cards-container">
+  @for (item of activeItems; track item.id) {
+    <app-list-card
+      [item]="item"
+      (completedChange)="onCompletedChange(item.id, $event)"
+      (quantityChange)="onQuantityChange(item.id, $event)"
+    />
+  }
+</div>
+
+<!-- Picked up section -->
+@if (completedItems.length > 0) {
+  <section
+    class="picked-up-section"
+    aria-labelledby="picked-up-heading"
+  >
+    <div class="picked-up-header">
+      <mat-icon>check_circle</mat-icon>
+
+      <div class="picked-up-text">
+        <h2 id="picked-up-heading">
+          {{ pickedUpMessage }}
+        </h2>
+        <p>Already in the cart</p>
+      </div>
     </div>
 
-</main>
+ 
+<div class="cards-container">
+  @for (item of activeItems; track item.id) {
+    <app-list-card
+      [item]="item"
+      (completedChange)="onCompletedChange(item.id, $event)"
+      (quantityChange)="onQuantityChange(item.id, $event)"
+    />
+  }
+</div>
+
+  </section>
+}
+
+
+  <!-- The Usual -->
+<app-tags
+  [items]="usualItems"
+  [existingItems]="groceryItems"
+  (itemSelected)="addUsualItem($event)"
+/>
+
+</section>
