@@ -50,6 +50,7 @@
   type="button"
   class="quantity-button"
   (click)="increaseQuantity()"
+   [disabled]="item().isCompleted"
 >
   <mat-icon>add</mat-icon>
 </button>

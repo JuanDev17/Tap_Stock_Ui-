@@ -1,0 +1,106 @@
+
+<mat-accordion class="add-new-accordion">
+  <mat-expansion-panel class="add-new-panel">
+
+    <!-- Accordion header -->
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>add_circle_outline</mat-icon>
+        Add New Item
+      </mat-panel-title>
+
+      <mat-panel-description>
+        What do we need to grab?
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <!-- Form -->
+    <form
+      class="add-new-form"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="form-fields">
+
+        <!-- Item name -->
+        <div class="form-field">
+                    <label for="title">
+            Item name <span class="required" aria-hidden="true">*</span>
+</label>
+          <input
+            id="title"
+            type="text"
+            formControlName="title"
+            placeholder="e.g. Milk"
+          />
+        </div>
+
+        <!-- Quantity and unit -->
+        <div class="form-row">
+          <div class="form-field">
+            <label for="quantity">
+              Quantity <span class="required" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="quantity"
+              type="number"
+              min="1"
+              formControlName="quantity"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="unit">
+              Unit <span class="required" aria-hidden="true">*</span>
+            </label>
+            <select id="unit" formControlName="unit">
+              <option value="each">Each</option>
+              <option value="dozen">Dozen</option>
+              <option value="bag">Bag</option>
+              <option value="pack">Pack</option>
+              <option value="gallon">Gallon</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Note -->
+        <div class="form-field">
+          <label for="note">
+            Note <span class="optional">(optional)</span>
+          </label>
+          <textarea
+            id="note"
+            formControlName="note"
+            placeholder="Need this for cereal..."
+            rows="3"
+          ></textarea>
+        </div>
+
+        <!-- Added by -->
+        <div class="form-field">
+          <label for="addedBy">
+            Added by <span class="required" aria-hidden="true">*</span>
+          </label>
+          <input
+            id="addedBy"
+            type="text"
+            formControlName="addedBy"
+            placeholder="e.g. Juan"
+          />
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button
+          type="submit"
+          class="submit-button"
+          [disabled]="form.invalid"
+        >
+          <mat-icon>add</mat-icon>
+          Add to List
+        </button>
+      </div>
+    </form>
+
+  </mat-expansion-panel>
+</mat-accordion>

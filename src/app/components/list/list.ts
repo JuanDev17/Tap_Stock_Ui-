@@ -11,6 +11,7 @@ import {
   GroceryItem,
   UsualItem
 } from '../../api/types/grocery.type';
+import { AddNew } from '../add-new/add-new';
 
 @Component({
   selector: 'app-list',
@@ -20,7 +21,8 @@ import {
     ListCard,
     MatAnchor,
     MatButtonModule,
-    Tags
+    Tags,
+    AddNew
   ],
   templateUrl: './list.html',
   styleUrl: './list.scss',
@@ -128,6 +130,10 @@ onQuantityChange(id: string, quantity: number): void {
       ? { ...item, quantity }
       : item
   );
+}
+
+addItem(item: GroceryItem): void {
+  this.groceryItems = [...this.groceryItems, item];
 }
 
 

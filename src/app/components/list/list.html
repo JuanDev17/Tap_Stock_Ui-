@@ -48,7 +48,7 @@
 
  
 <div class="cards-container">
-  @for (item of activeItems; track item.id) {
+  @for (item of completedItems; track item.id) {
     <app-list-card
       [item]="item"
       (completedChange)="onCompletedChange(item.id, $event)"
@@ -59,6 +59,8 @@
 
   </section>
 }
+
+<app-add-new (itemAdded)="addItem($event)" />
 
 
   <!-- The Usual -->
