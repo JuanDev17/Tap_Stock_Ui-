@@ -3,10 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAnchor, MatButtonModule } from '@angular/material/button';
-
 import { ListCard } from '../list-card/list-card';
 import { Tags } from '../tags/tags';
-
 import {
   GroceryItem,
   UsualItem
@@ -28,6 +26,8 @@ import { AddNew } from '../add-new/add-new';
   styleUrl: './list.scss',
 })
 export class List {
+
+  selectedItem: GroceryItem | null = null;
 
   // Your existing mock grocery items
   groceryItems: GroceryItem[] = [
@@ -132,8 +132,29 @@ onQuantityChange(id: string, quantity: number): void {
   );
 }
 
-addItem(item: GroceryItem): void {
-  this.groceryItems = [...this.groceryItems, item];
+// parent saves the item from child component AddNew, 
+// which emits the item via itemAdded output
+saveItem(item: GroceryItem): void {
+
+// check if the item already exists in the groceryItems array
+  const existingIndex = this.groceryItems.findIndex(
+    grocery => grocery.id === item.id
+  );
+
+  // 
+  if (existingIndex === -1) {
+    this.groceryItems = [...this.groceryItems, item];
+  } else {
+    this.groceryItems = this.groceryItems.map(grocery =>
+      grocery.id === item.id ? item : grocery
+    );
+  }
+
+  this.selectedItem = null;
+}
+
+startEditing(item: GroceryItem): void {
+  this.selectedItem = item;
 }
 
 

@@ -1,16 +1,16 @@
 
 <mat-accordion class="add-new-accordion">
-  <mat-expansion-panel class="add-new-panel">
+  <mat-expansion-panel class="add-new-panel" [expanded]="!!item()">
 
     <!-- Accordion header -->
     <mat-expansion-panel-header>
       <mat-panel-title>
-        <mat-icon>add_circle_outline</mat-icon>
-        Add New Item
+        <mat-icon>{{ item() ? 'edit' : 'add_circle_outline' }}</mat-icon>
+        {{ item() ? 'Edit Item' : 'Add New Item' }}
       </mat-panel-title>
 
       <mat-panel-description>
-        What do we need to grab?
+        {{ item() ? 'Update the item details' : 'What do we need to grab?' }}
       </mat-panel-description>
     </mat-expansion-panel-header>
 
@@ -96,8 +96,8 @@
           class="submit-button"
           [disabled]="form.invalid"
         >
-          <mat-icon>add</mat-icon>
-          Add to List
+          <mat-icon>{{item() ? 'save' : 'add'}}</mat-icon>
+          {{ item() ? 'Save Changes' : 'Add Item' }}
         </button>
       </div>
     </form>

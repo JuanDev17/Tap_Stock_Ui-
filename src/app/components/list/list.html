@@ -25,6 +25,7 @@
       [item]="item"
       (completedChange)="onCompletedChange(item.id, $event)"
       (quantityChange)="onQuantityChange(item.id, $event)"
+      (edit)="startEditing(item)"
     />
   }
 </div>
@@ -53,6 +54,7 @@
       [item]="item"
       (completedChange)="onCompletedChange(item.id, $event)"
       (quantityChange)="onQuantityChange(item.id, $event)"
+      (edit)="startEditing(item)"
     />
   }
 </div>
@@ -60,7 +62,10 @@
   </section>
 }
 
-<app-add-new (itemAdded)="addItem($event)" />
+<app-add-new
+  [item]="selectedItem"
+  (itemAdded)="saveItem($event)"
+/>
 
 
   <!-- The Usual -->
