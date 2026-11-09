@@ -26,6 +26,7 @@
       (completedChange)="onCompletedChange(item.id, $event)"
       (quantityChange)="onQuantityChange(item.id, $event)"
       (edit)="startEditing(item)"
+      (delete)="deleteItem(item.id)"
     />
   }
 </div>
@@ -62,10 +63,13 @@
   </section>
 }
 
-<app-add-new
+<div class="add-new">
+   <app-add-new
   [item]="selectedItem"
   (itemAdded)="saveItem($event)"
-/>
+/> 
+</div>
+
 
 
   <!-- The Usual -->

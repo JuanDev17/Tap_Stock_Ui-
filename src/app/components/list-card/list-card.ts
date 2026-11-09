@@ -15,9 +15,10 @@ export class ListCard {
 
   item = input.required<GroceryItem>();
     
-   completedChange = output<boolean>();
+completedChange = output<boolean>();
 quantityChange = output<number>();
 edit = output<void>();
+delete = output<void>();
 
 
 increaseQuantity(): void {
@@ -28,6 +29,10 @@ increaseQuantity(): void {
   console.log('STEP 2: Emitting', newQuantity);
 
   this.quantityChange.emit(newQuantity);
+}
+
+deleteItem(): void {
+  
 }
 
 }

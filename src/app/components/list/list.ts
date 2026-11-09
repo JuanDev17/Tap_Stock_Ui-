@@ -157,6 +157,11 @@ startEditing(item: GroceryItem): void {
   this.selectedItem = item;
 }
 
+deleteItem(id: string): void {
+  // !== strict inequality 
+  // updating groceryItems - filtering out 
+  this.groceryItems = this.groceryItems.filter(item => item.id !== id)
+}
 
 
 
